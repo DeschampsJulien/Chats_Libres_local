@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app_name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <link rel="stylesheet" href="/styles/frontignan-map.css?v=20260415-5">
+{% endblock %}
+
+{% block javascripts %}
+    <script id="frontignan-config" type="application/json">{{ {
+        appName: app_name,
+        currentMode: current_mode,
+        defaultLatitude: 43.4484,
+        defaultLongitude: 3.754,
+        addChatUrl: path('app_home_add_chat'),
+        addMaisonUrl: path('app_home_add_maison'),
+        editChatBaseUrl: path('app_home_edit_chat', { id: '__ID__' }),
+        editMaisonBaseUrl: path('app_home_edit_maison', { id: '__ID__' })
+    }|json_encode|raw }}</script>
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script src="/js/frontignan-map.js?v=20260415-5" defer></script>
+{% endblock %}
+
+{% block body %}
+    <section class="projets-page" data-frontignan-app>
+        <div class="map-card">
+            <div class="mode-page-topbar">
+                <a href="{{ path('app_home') }}" class="btn-secondary">Changer de mode</a>
+                <span class="mode-page-badge">
+                    {% if current_mode == 'chat' %}Mode Chat{% else %}Mode Maison{% endif %}
+                </span>
+            </div>
+
+            <p class="sur-titre">Carte interactive</p>
+            <h1>
+                {% if current_mode == 'chat' %}
+                    Gérer les chats
+                {% else %}
+                    Gérer les maisons
+                {% endif %}
+            </h1>
+            <p class="description">
+                {% if current_mode == 'chat' %}
+                    Cette page affiche uniquement les chats enregistrés sur la carte et dans la liste.
+                {% else %}
+                    Cette page affiche uniquement les maisons enregistrées sur la carte et dans la liste.
+                {% endif %}
+            </p>
+
+            <section class="mode-list" aria-live="polite">
+                <div class="mode-list-header">
+                    <div class="mode-list-heading">
+                        <h2 class="mode-list-title" data-mode-list-title>
+                            {% if current_mode == 'chat' %}Liste des chats{% else %}Liste des maisons{% endif %}
+                        </h2>
+                        <p class="mode-list-count" data-mode-list-count>0 element</p>
+                    </div>
+                    <a href="{% if current_mode == 'chat' %}{{ path('app_home_add_chat') }}{% else %}{{ path('app_home_add_maison') }}{% endif %}" class="btn-primary mode-list-add-link" data-mode-add-link>
+                        {% if current_mode == 'chat' %}Ajouter un chat{% else %}Ajouter une maison{% endif %}
+                    </a>
+                </div>
+                <div class="mode-list-items" data-mode-list></div>
+                <p class="mode-list-empty" data-mode-list-empty hidden>Aucun element pour ce mode.</p>
+            </section>
+
+            <div class="actions">
+                <button type="button" class="btn-secondary" data-action="show-all-points">
+                    Voir tous les points
+                </button>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" data-google-maps-link>
+                    Itineraire Google Maps
+                </a>
+            </div>
+
+            <div id="leaflet-map" class="leaflet-map" aria-label="Carte interactive de Frontignan"></div>
+
+            <section class="selected-form" data-selected-section>
+                <div class="form-header">
+                    <div>
+                        <h2><span class="type-emoji">🏠</span>  Fiche d'identification maison</h2>
+                        <p class="form-subtitle">Cliquez sur un point de la carte pour modifier ses informations.</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="#" class="btn-primary" data-action="edit-maison">Modifier la fiche</a>
+                    </div>
+                </div>
+
+                <form class="selected-grid" data-maison-form hidden>
+                    <div class="form-section">
+                        <h3>Maison</h3>
+                        <label for="maisonNom">Nom</label>
+                        <input id="maisonNom" name="nom" type="text">
+                        <label for="maisonAdresse">Adresse</label>
+                        <input id="maisonAdresse" name="adresse" type="text">
+                        <label for="maisonCommentaire">Commentaire</label>
+                        <textarea id="maisonCommentaire" name="commentaire" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Position</h3>
+                        <label for="maisonLatitude">Latitude</label>
+                        <input id="maisonLatitude" name="latitude" type="text">
+                        <label for="maisonLongitude">Longitude</label>
+                        <input id="maisonLongitude" name="longitude" type="text">
+                    </div>
+                </form>
+
+                <div class="form-footer-actions">
+                    <a href="#" class="btn-primary" data-action="edit-maison">Modifier la fiche</a>
+                    <button type="button" class="supprimer" data-action="delete-selected">
+                        Supprimer ce point
+                    </button>
+                </div>
+            </section>
+
+            <section class="chat-form" data-chat-form-section hidden>
+                <div class="form-header">
+                    <div>
+                        <h2><span class="type-emoji">🐱</span> Fiche d'identification chat</h2>
+                    </div>
+                    <div class="header-actions">
+                        <a href="#" class="btn-primary" data-action="edit-chat">Modifier la fiche</a>
+                    </div>
+                </div>
+
+                <form class="form-grid" data-chat-form>
+                    {% include 'home/_chat_form_fields.html.twig' %}
+                </form>
+
+                <div class="form-footer-actions">
+                    <a href="#" class="btn-primary" data-action="edit-chat">Modifier la fiche</a>
+                    <button type="button" class="supprimer" data-action="delete-chat-sheet">
+                        Supprimer la fiche
+                    </button>
+                </div>
+            </section>
+
+            <p class="message-erreur standalone-error" data-error-message hidden></p>
+            <div class="toast-notification" data-success-toast hidden></div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app_name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/frontignan-map.css?v=20260415-5">
+{% endblock %}
+
+{% block body %}
+    <section class="projets-page">
+        <div class="map-card landing-card">
+            <p class="sur-titre">Accueil</p>
+            <h1>Choisissez votre mode</h1>
+            <p class="description">
+                Sélectionnez un espace de travail pour afficher uniquement les chats ou uniquement les maisons.
+            </p>
+
+            <div class="type-selector landing-selector">
+                <a href="{{ path('app_home_mode', { mode: 'chat' }) }}" class="type-card landing-type-card">
+                    <span class="type-emoji">🐱</span>
+                    <strong>Mode Chat</strong>
+                    <small>Voir la liste des chats, la carte filtrée et ajouter une nouvelle fiche chat.</small>
+                </a>
+
+                <a href="{{ path('app_home_mode', { mode: 'maison' }) }}" class="type-card landing-type-card">
+                    <span class="type-emoji">🏠</span>
+                    <strong>Mode Maison</strong>
+                    <small>Voir la liste des maisons, la carte filtrée et ajouter un nouveau point maison.</small>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

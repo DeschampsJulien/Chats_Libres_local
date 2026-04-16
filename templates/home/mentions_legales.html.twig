@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales{% endblock %}
+
+{% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/frontignan-map.css?v=20260415-5">
+{% endblock %}
+
+{% block body %}
+    <section class="projets-page">
+        <article class="map-card legal-card">
+            <p class="sur-titre">Informations légales</p>
+            <h1>Mentions légales</h1>
+            <p class="description">
+                Cette page regroupe les informations minimales de publication du site {{ app_name }}.
+            </p>
+
+            <section class="legal-section">
+                <h2>Éditeur du site</h2>
+                <p>Nom du projet : {{ app_name }}</p>
+                <p>Responsable de publication : à compléter</p>
+                <p>Contact : à compléter</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Hébergement</h2>
+                <p>Application utilisée en environnement local de développement.</p>
+                <p>Hébergement de production : à compléter avant mise en ligne publique.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Données et contenus</h2>
+                <p>Les informations saisies dans l'application sont destinées au suivi interne du projet.</p>
+                <p>Les utilisateurs conservent un droit de rectification ou de suppression des données les concernant selon le cadre légal applicable.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Propriété intellectuelle</h2>
+                <p>Les contenus, visuels et éléments graphiques du site sont protégés et ne peuvent pas être réutilisés sans autorisation préalable.</p>
+            </section>
+        </article>
+    </section>
+{% endblock %}

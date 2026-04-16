@@ -1,0 +1,220 @@
+<div class="form-section full-width dossier-section">
+    <h3>Numero de dossier *</h3>
+    <input name="dossierNumero" type="text" required>
+    <p class="field-help">(Format conseille : Annee - Quartier - Numero)</p>
+    <label for="adressePopupChat">Adresse *</label>
+    <input id="adressePopupChat" name="adressePrecise" type="text" required>
+</div>
+
+<div class="form-section">
+    <h3>1. Informations de trappage</h3>
+    <label for="trappageDate">Date</label>
+    <input id="trappageDate" name="trappageDate" type="text">
+    <label for="trappageHeure">Heure</label>
+    <input id="trappageHeure" name="trappageHeure" type="text">
+    <label for="commune">Commune</label>
+    <input id="commune" name="commune" type="text">
+    <label for="typeLieu">Type de lieu</label>
+    <select id="typeLieu" name="typeLieu">
+        <option value="">Choisir</option>
+        <option value="Voie publique">Voie publique</option>
+        <option value="Terrain prive">Terrain prive</option>
+        <option value="Entreprise">Entreprise</option>
+        <option value="Autre">Autre</option>
+    </select>
+    <label for="autreTypeLieu">Autre type de lieu</label>
+    <input id="autreTypeLieu" name="autreTypeLieu" type="text">
+    <label for="nomEntrepriseParticulier">Nom entreprise / particulier</label>
+    <input id="nomEntrepriseParticulier" name="nomEntrepriseParticulier" type="text">
+    <label for="trappageTelephone">Telephone</label>
+    <input id="trappageTelephone" name="trappageTelephone" type="text">
+    <label for="colonieSite">Nom de la colonie / site</label>
+    <input id="colonieSite" name="colonieSite" type="text">
+</div>
+
+<div class="form-section">
+    <h3>2. Signalement</h3>
+    <label for="signalementNom">Nom / Prenom</label>
+    <input id="signalementNom" name="signalementNom" type="text">
+    <label for="signalementTelephone">Telephone</label>
+    <input id="signalementTelephone" name="signalementTelephone" type="text">
+    <label for="signalementEmail">Email</label>
+    <input id="signalementEmail" name="signalementEmail" type="text">
+</div>
+
+<div class="form-section">
+    <h3>3. Statut du chat</h3>
+    <label for="statutChat">Statut du chat</label>
+    <select id="statutChat" name="statutChat">
+        <option value="">Choisir</option>
+        <option value="Chat errant">Chat errant</option>
+        <option value="Chat libre (colonie suivie)">Chat libre (colonie suivie)</option>
+        <option value="Chat avec proprietaire">Chat avec proprietaire</option>
+    </select>
+    <label for="proprietaireNom">Nom du proprietaire</label>
+    <input id="proprietaireNom" name="proprietaireNom" type="text">
+    <label for="proprietaireAdresse">Adresse du proprietaire</label>
+    <input id="proprietaireAdresse" name="proprietaireAdresse" type="text">
+    <label for="proprietaireTelephone">Telephone du proprietaire</label>
+    <input id="proprietaireTelephone" name="proprietaireTelephone" type="text">
+</div>
+
+<div class="form-section">
+    <h3>4. Situation de nourrissage</h3>
+    <label for="chatNourri">Chat nourri</label>
+    <select id="chatNourri" name="chatNourri">
+        <option value="">Choisir</option>
+        <option value="Oui">Oui</option>
+        <option value="Non">Non</option>
+        <option value="Inconnu">Inconnu</option>
+    </select>
+    <label for="nourrissageType">Type de nourrissage</label>
+    <select id="nourrissageType" name="nourrissageType">
+        <option value="">Choisir</option>
+        <option value="Particulier">Particulier</option>
+        <option value="Association">Association</option>
+        <option value="Plusieurs personnes">Plusieurs personnes</option>
+    </select>
+    <label for="nourrisseurNom">Nom du nourrisseur</label>
+    <input id="nourrisseurNom" name="nourrisseurNom" type="text">
+    <label for="nourrisseurTelephone">Telephone (si accord)</label>
+    <input id="nourrisseurTelephone" name="nourrisseurTelephone" type="text">
+</div>
+
+<div class="form-section">
+    <h3>5. Informations sanitaires</h3>
+    <label for="sterilise">Sterilise</label>
+    <select id="sterilise" name="sterilise">
+        <option value="">Choisir</option>
+        <option value="Oui">Oui</option>
+        <option value="Non">Non</option>
+        <option value="Inconnu">Inconnu</option>
+    </select>
+    <label for="dateSterilisation">Date de sterilisation</label>
+    <input id="dateSterilisation" name="dateSterilisation" type="text">
+    <label for="identificationType">Identification</label>
+    <select id="identificationType" name="identificationType">
+        <option value="">Choisir</option>
+        <option value="Puce">Puce</option>
+        <option value="Tatoue">Tatoue</option>
+        <option value="Non identifie">Non identifie</option>
+        <option value="Inconnu">Inconnu</option>
+    </select>
+    <label for="identificationNumero">Numero identification</label>
+    <input id="identificationNumero" name="identificationNumero" type="text">
+    <label for="veterinaireNom">Nom du veterinaire</label>
+    <input id="veterinaireNom" name="veterinaireNom" type="text">
+    <label for="clinique">Clinique</label>
+    <input id="clinique" name="clinique" type="text">
+    <label for="financementType">Financement</label>
+    <select id="financementType" name="financementType">
+        <option value="">Choisir</option>
+        <option value="Association">Association</option>
+        <option value="Mairie">Mairie</option>
+        <option value="Fondation">Fondation</option>
+        <option value="Particulier">Particulier</option>
+        <option value="Autre">Autre</option>
+    </select>
+    <label for="financementAutre">Autre financement</label>
+    <input id="financementAutre" name="financementAutre" type="text">
+</div>
+
+<div class="form-section">
+    <h3>6. Identite du chat</h3>
+    <label for="nomAttribue">Nom attribue</label>
+    <input id="nomAttribue" name="nomAttribue" type="text">
+    <label for="sexe">Sexe</label>
+    <select id="sexe" name="sexe">
+        <option value="">Choisir</option>
+        <option value="Male">Male</option>
+        <option value="Femelle">Femelle</option>
+        <option value="Indetermine">Indetermine</option>
+    </select>
+    <label for="ageApprox">Age approximatif</label>
+    <input id="ageApprox" name="ageApprox" type="text">
+</div>
+
+<div class="form-section">
+    <h3>7. Description physique</h3>
+    <label for="couleurRobe">Couleur de la robe</label>
+    <input id="couleurRobe" name="couleurRobe" type="text">
+    <label for="typePelage">Type de pelage</label>
+    <select id="typePelage" name="typePelage">
+        <option value="">Choisir</option>
+        <option value="Court">Court</option>
+        <option value="Mi-long">Mi-long</option>
+        <option value="Long">Long</option>
+    </select>
+    <label for="couleurYeux">Couleur des yeux</label>
+    <input id="couleurYeux" name="couleurYeux" type="text">
+    <label for="signesParticuliers">Signes particuliers</label>
+    <textarea id="signesParticuliers" name="signesParticuliers" rows="4"></textarea>
+</div>
+
+<div class="form-section">
+    <h3>8. Suivi et observations</h3>
+    <label for="photo">Photo</label>
+    <select id="photo" name="photo">
+        <option value="">Choisir</option>
+        <option value="Oui">Oui</option>
+        <option value="Non">Non</option>
+    </select>
+    <label for="photoReference">Numero photo / reference</label>
+    <input id="photoReference" name="photoReference" type="text">
+    <label for="etatGeneral">Etat general</label>
+    <select id="etatGeneral" name="etatGeneral">
+        <option value="">Choisir</option>
+        <option value="Bon">Bon</option>
+        <option value="Moyen">Moyen</option>
+        <option value="Mauvais">Mauvais</option>
+        <option value="Urgent">Urgent</option>
+    </select>
+    <label for="comportement">Comportement</label>
+    <select id="comportement" name="comportement">
+        <option value="">Choisir</option>
+        <option value="Sociable">Sociable</option>
+        <option value="Craintif">Craintif</option>
+        <option value="Agressif">Agressif</option>
+        <option value="Sauvage">Sauvage</option>
+    </select>
+</div>
+
+<div class="form-section">
+    <h3>9. Orientation du chat</h3>
+    <label for="orientation">Orientation</label>
+    <select id="orientation" name="orientation">
+        <option value="">Choisir</option>
+        <option value="Relachement sur site">Relachement sur site</option>
+        <option value="Adoption envisagee">Adoption envisagee</option>
+        <option value="En famille d accueil">En famille d accueil</option>
+        <option value="Soins / convalescence">Soins / convalescence</option>
+    </select>
+    <label for="lieuRelachement">Lieu de relachement</label>
+    <input id="lieuRelachement" name="lieuRelachement" type="text">
+    <label for="dateRelachement">Date de relachement</label>
+    <input id="dateRelachement" name="dateRelachement" type="text">
+</div>
+
+<div class="form-section full-width">
+    <h3>10. Etat d avancement du dossier</h3>
+    <div class="checkbox-grid">
+        <label><input name="etatAvancement" type="checkbox" value="A trapper"> A trapper</label>
+        <label><input name="etatAvancement" type="checkbox" value="Trappe"> Trappe</label>
+        <label><input name="etatAvancement" type="checkbox" value="Chez le veterinaire"> Chez le veterinaire</label>
+        <label><input name="etatAvancement" type="checkbox" value="Sterilise"> Sterilise</label>
+        <label><input name="etatAvancement" type="checkbox" value="Identifie (puce / tatouage)"> Identifie (puce / tatouage)</label>
+        <label><input name="etatAvancement" type="checkbox" value="Non identifie"> Non identifie</label>
+        <label><input name="etatAvancement" type="checkbox" value="Oriente adoption"> Oriente adoption</label>
+        <label><input name="etatAvancement" type="checkbox" value="Adopte"> Adopte</label>
+        <label><input name="etatAvancement" type="checkbox" value="Relache"> Relache</label>
+        <label><input name="etatAvancement" type="checkbox" value="En suivi"> En suivi</label>
+    </div>
+</div>
+
+<div class="form-section full-width">
+    <h3>11. Intervenants</h3>
+    <label for="nomTrappeur">Nom du trappeur</label>
+    <input id="nomTrappeur" name="nomTrappeur" type="text">
+    <label for="associationCollectif">Association / Collectif</label>
+    <input id="associationCollectif" name="associationCollectif" type="text">
+</div>

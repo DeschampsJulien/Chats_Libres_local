@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une maison{% endblock %}
+
+{% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <link rel="stylesheet" href="/styles/frontignan-map.css?v=20260415-6">
+{% endblock %}
+
+{% block javascripts %}
+    <script id="edit-maison-config" type="application/json">{{ {
+        defaultLatitude: maison.latitude,
+        defaultLongitude: maison.longitude,
+        backUrl: path('app_home_mode', { mode: 'maison' }),
+        updateUrl: path('api_lieux_maison_update', { id: maison.id }),
+        maison: maison
+    }|json_encode|raw }}</script>
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script src="/js/edit-house-map.js?v=20260415-6" defer></script>
+{% endblock %}
+
+{% block body %}
+    <section class="projets-page" data-edit-house-app>
+        <div class="map-card add-chat-card">
+            <div class="add-chat-topbar">
+                <a href="{{ path('app_home_mode', { mode: 'maison' }) }}" class="btn-secondary add-chat-back-link">Retour a la liste</a>
+            </div>
+
+            <p class="sur-titre">Modification</p>
+            <h1>Modifier une maison</h1>
+            <p class="description">
+                Ajustez la position sur la carte si besoin, modifiez la fiche, puis enregistrez les changements.
+            </p>
+
+            <section class="mode-list add-chat-status-panel" aria-live="polite">
+                <div class="mode-list-header">
+                    <div class="mode-list-heading">
+                        <h2 class="mode-list-title">Position de la maison</h2>
+                        <p class="mode-list-count" data-selected-coordinates>Aucun point selectionne</p>
+                    </div>
+                </div>
+                <p class="mode-list-empty" data-edit-house-help>Cliquez sur la carte pour repositionner le marqueur de la maison.</p>
+                <p class="mode-list-empty auto-address-status" data-geocode-status hidden></p>
+            </section>
+
+            <div id="edit-house-map" class="leaflet-map" aria-label="Carte pour modifier une maison"></div>
+
+            <p class="message-erreur standalone-error" data-error-message hidden></p>
+
+            <section class="selected-form add-chat-form-panel" data-house-form-section>
+                <div class="form-header">
+                    <div>
+                        <h2>🏠 Fiche maison</h2>
+                        <p class="form-subtitle">Mettez a jour la fiche puis enregistrez.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button type="button" class="btn-primary" data-action="save-house">
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+                </div>
+
+                <form class="selected-grid" data-house-form>
+                    {% include 'home/_maison_form_fields.html.twig' %}
+                </form>
+
+                <div class="form-footer-actions">
+                    <button type="button" class="btn-primary" data-action="save-house">
+                        Enregistrer les modifications
+                    </button>
+                </div>
+            </section>
+
+            <div class="toast-notification" data-success-toast hidden></div>
+        </div>
+    </section>
+{% endblock %}
