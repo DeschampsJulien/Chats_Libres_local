@@ -55,9 +55,9 @@
             </h1>
             <p class="description">
                 {% if current_mode == 'chat' %}
-                    Cette page affiche la géolocalisation et la fiche d'identification du chat sélectionné.
+                    Cette page affiche uniquement les chats enregistrés sur la carte et dans la liste.
                 {% else %}
-                    Cette page affiche la géolocalisation et la fiche d'identification de la maison sélectionné.
+                    Cette page affiche uniquement les maisons enregistrées sur la carte et dans la liste.
                 {% endif %}
             </p>
 
@@ -65,7 +65,7 @@
                 <div class="mode-list-header">
                     <div class="mode-list-heading">
                         <h2 class="mode-list-title" data-mode-list-title>
-                            {% if current_mode == 'chat' %}Sélectionner ou Ajouter un <span class="type-emoji">🐱</span>{% else %}Sélectionner ou Ajouter une <span class="type-emoji">🏠</span>{% endif %}
+                            {% if current_mode == 'chat' %}Liste des chats{% else %}Liste des maisons{% endif %}
                         </h2>
                         <p class="mode-list-count" data-mode-list-count>0 element</p>
                     </div>
@@ -91,7 +91,7 @@
             <section class="selected-form" data-selected-section>
                 <div class="form-header">
                     <div>
-                        <h2>Fiche d'identification maison</h2>
+                        <h2><span class="type-emoji">🏠</span>  Fiche d'identification maison</h2>
                         <p class="form-subtitle">Cliquez sur un point de la carte pour modifier ses informations.</p>
                     </div>
                     <div class="header-actions">
@@ -130,7 +130,7 @@
             <section class="chat-form" data-chat-form-section hidden>
                 <div class="form-header">
                     <div>
-                        <h2>Fiche d'identification chat</h2>
+                        <h2><span class="type-emoji">🐱</span> Fiche d'identification chat</h2>
                     </div>
                     <div class="header-actions">
                         <a href="#" class="btn-primary" data-action="edit-chat">Modifier la fiche</a>
