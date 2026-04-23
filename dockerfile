@@ -1,8 +1,8 @@
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
-    git unzip libicu-dev libzip-dev zip \
-    && docker-php-ext-install intl pdo pdo_mysql zip opcache
+    git unzip libicu-dev libzip-dev zip libonig-dev \
+    && docker-php-ext-install intl pdo pdo_mysql zip opcache mbstring
 
 RUN a2enmod rewrite
 
@@ -11,7 +11,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+ENV APP_ENV=prod
+ENV APP_SECRET=devsecret
+
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+RUN php bin/console cache:clear --env=prod || true
 
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/public|g' /etc/apache2/sites-available/000-default.conf
 
