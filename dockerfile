@@ -18,7 +18,6 @@ COPY . .
 
 # FORCE PROD (IMPORTANT pour Render)
 ENV APP_ENV=prod
-ENV SYMFONY_ENV=prod
 ENV APP_DEBUG=0
 
 # Installer dépendances SANS scripts (évite crash Dotenv/cache)
