@@ -1,13 +1,7 @@
 <?php
 
-use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Runtime\SymfonyRuntime;
 
-if (!isset($_SERVER['APP_ENV'])) {
-    $_SERVER['APP_ENV'] = 'prod';
-    $_ENV['APP_ENV'] = 'prod';
-}
+require dirname(__DIR__).'/vendor/autoload.php';
 
-if (!isset($_SERVER['APP_DEBUG'])) {
-    $_SERVER['APP_DEBUG'] = false;
-    $_ENV['APP_DEBUG'] = false;
-}
+return new SymfonyRuntime();
