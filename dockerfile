@@ -12,7 +12,7 @@ WORKDIR /var/www
 COPY . .
 
 ENV APP_ENV=prod
-ENV APP_SECRET=devsecret
+ENV APP_SECRET=68c28c122a3680b97c73ae3aa4f46bc1
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
