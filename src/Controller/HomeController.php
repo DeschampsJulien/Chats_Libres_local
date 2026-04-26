@@ -100,4 +100,10 @@ final class HomeController extends AbstractController
             'current_mode' => $currentMode,
         ]);
     }
+
+    #[Route('/ping')]
+public function ping(): Response
+{
+    return new Response('OK');
+}
 }
