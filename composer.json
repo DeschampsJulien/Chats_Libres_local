@@ -9,7 +9,7 @@
         "ext-iconv": "*",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
-        "doctrine/dbal": "*",
+        "doctrine/dbal": "^4.0",
         "doctrine/doctrine-bundle": "^2.18.2",
         "doctrine/doctrine-migrations-bundle": "^3.7",
         "doctrine/orm": "^3.6.2",

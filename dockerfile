@@ -34,7 +34,8 @@ RUN composer install \
     --optimize-autoloader \
     --no-interaction \
     --prefer-dist \
-    --no-scripts
+    --no-scripts \
+    -vvv
 
 RUN chown -R www-data:www-data /var/www
 
