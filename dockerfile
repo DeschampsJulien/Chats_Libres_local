@@ -29,11 +29,16 @@ COPY . .
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
 
+RUN composer self-update --2
+
+RUN composer diagnose
+
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
     --no-interaction \
     --prefer-dist \
+    --no-progress \
     --no-scripts
 
 RUN echo "SYMFONY BUILD OK" > /var/www/public/build.txt
